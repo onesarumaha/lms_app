@@ -25,14 +25,20 @@
     <!-- Morris Chart Css-->
     <link href="{{ asset('layout-admin/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
 
+     <!-- JQuery DataTable Css -->
+    <link href="{{ asset('layout-admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
+
     <!-- Custom Css -->
     <link href="{{ asset('layout-admin/css/style.css')}}" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('layout-admin/css/themes/all-themes.css')}}" rel="stylesheet" />
+
+    
 </head>
 
 <body class="theme-red">
+    @include('sweetalert::alert')
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -70,7 +76,7 @@
     <!-- #Top Bar -->
 
     <!-- Sidebar Bar -->
-         @include('layouts.sidebar_blade')
+         @include('layouts.sidebar')
     <!-- #Sidebar Bar -->
     
     <!-- Content -->
@@ -114,11 +120,42 @@
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{ asset('layout-admin/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
 
+  
+
+     <!-- Jquery DataTable Plugin Js -->
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
+    <script src="{{ asset('layout-admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+
+    <script>
+        $(function () {
+            $('.js-basic-example').DataTable({
+                responsive: true
+            });
+
+            $('.js-exportable').DataTable({
+                dom: 'Bfrtip',
+                responsive: true,
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+
+    
+
     <!-- Custom Js -->
     <script src="{{ asset('layout-admin/js/admin.js')}}"></script>
     <script src="{{ asset('layout-admin/js/pages/index.js')}}"></script>
 
-    <!-- Demo Js -->
+     <!-- Demo Js -->
     <script src="{{ asset('layout-admin/js/demo.js')}}"></script>
 </body>
 
